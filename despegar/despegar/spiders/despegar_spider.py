@@ -58,7 +58,7 @@ class DespegarSpider(scrapy.Spider):
 		item['link'] = response.url
 		#item['project'] = self.settings.get('BOT_NAME')
 		#item['spider'] = self.name
-		#item['server'] = socket.gethostname()
+		item['source'] = 'despegar'
 		item['date'] = datetime.datetime.now()
 
 		#return l.load_item()

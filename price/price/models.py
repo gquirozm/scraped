@@ -15,14 +15,14 @@ def db_connect():
     return create_engine('postgresql://dpa-user@localhost:5432/scrape')
 
 
-def create_despegar_table(engine):
+def create_price_table(engine):
     """"""
     DeclarativeBase.metadata.create_all(engine)
 
 
-class Despegar(DeclarativeBase):
+class Price(DeclarativeBase):
     """Sqlalchemy deals model"""
-    __tablename__ = "despegar"
+    __tablename__ = "price"
 
     id = Column('id',Integer, primary_key=True)
     city = Column('city', String, nullable=True)

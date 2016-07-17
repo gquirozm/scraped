@@ -22,6 +22,6 @@ class DespegarItem(scrapy.Item):
     #url = scrapy.Field()
     #project = scrapy.Field()
     #spider = scrapy.Field()
-    #server = scrapy.Field()
+    source = scrapy.Field()
     date = scrapy.Field()
     pass

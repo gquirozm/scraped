@@ -10,5 +10,18 @@ import scrapy
 
 class PriceItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
+    city = scrapy.Field()
+    name = scrapy.Field()
+    price = scrapy.Field()
+    address = scrapy.Field()
+    link = scrapy.Field()
+    latitud = scrapy.Field()
+    longitud = scrapy.Field()
+
+  # Housekeeping fields
+    #url = scrapy.Field()
+    #project = scrapy.Field()
+    #spider = scrapy.Field()
+    source = scrapy.Field()
+    date = scrapy.Field()
     pass
