@@ -5,16 +5,16 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 from sqlalchemy.orm import sessionmaker
-from models import Price, db_connect, create_price_table
+from models import Booking, db_connect, create_booking_table
 
-class PricePipeline(object):
+class BookingPipeline(object):
     """Despegar pipeline for storing scraped items in the database"""
     def __init__(self):
         """Initializes database connection and sessionmaker.
            Creates deals table.
         """
         engine = db_connect()
-        create_price_table(engine)
+        create_booking_table(engine)
         self.Session = sessionmaker(bind=engine)
 
     def process_item(self, item, spider):
@@ -22,7 +22,7 @@ class PricePipeline(object):
         This method is called for every item pipeline component.
         """
         session = self.Session()
-        deal = Price(**item)
+        deal = Booking(**item)
 
         try:
             session.add(deal)

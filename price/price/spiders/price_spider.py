@@ -14,9 +14,9 @@ class PriceSpider(scrapy.Spider):
 	name = 'price_cl'
 	allowed_domains = ["pricetravel.com.mx"]
 	start_urls = ('http://www.pricetravel.com.mx/cancun/hoteles/3-estrellas-mas?true',
-	#	'http://www.pricetravel.com.mx/playa-del-carmen/hoteles/3-estrellas-mas?true',
-	#	'http://www.pricetravel.com.mx/acapulco/hoteles/3-estrellas-mas?true',
-	#	'http://www.pricetravel.com.mx/puerto-vallarta/hoteles/3-estrellas-mas?true',
+		'http://www.pricetravel.com.mx/playa-del-carmen/hoteles/3-estrellas-mas?true',
+		'http://www.pricetravel.com.mx/acapulco/hoteles/3-estrellas-mas?true',
+		'http://www.pricetravel.com.mx/puerto-vallarta/hoteles/3-estrellas-mas?true',
 	#	'http://www.pricetravel.com.mx/ciudad-de-mexico/hoteles/3-estrellas-mas?true',
 
 	)
@@ -51,14 +51,18 @@ class PriceSpider(scrapy.Spider):
 		item=PriceItem()
 
 		# Load fields using XPath expressions
-		item['city'] = ' '.join([x.encode('utf-8') for x in response.xpath('//*[@class="productName"]/h1/text()').extract()]).strip()
+		item['city'] = ' '.join([x.encode('utf-8') for x in response.xpath('//*[@class="productName"]/div/p/span[1]/text()').extract()]).strip()
 		item['name'] = ' '.join([x.encode('utf-8') for x in response.xpath('//*[@class="productName"]/h1/text()').extract()]).strip()
                     #MapCompose(lambda i: i.replace(',', ''), float),
                     #re='[.0-9]+')
 		item['price'] = response.xpath('//*[contains(@class,"promotion-pay")]').re('[.0-9]+')
 		item['address'] = ' '.join([x.encode('utf-8') for x in response.xpath('//*[@class="facts"]/p/text()').extract()]).strip()
-
-
+		
+		#lat = response.xpath('//*[@class="hf-maps-container"]').extract()
+  		#lon = response.xpath('//*[@class="hf-maps-container"]').extract()
+		item['latitud'] = '21.077625016520372'
+		item['longitud'] = '-86.77535489814761'
+		
 		# Housekeeping fields
 		item['link'] = response.url
 		#item['project'] = self.settings.get('BOT_NAME')

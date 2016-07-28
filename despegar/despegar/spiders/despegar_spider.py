@@ -14,7 +14,9 @@ class DespegarSpider(scrapy.Spider):
 	allowed_domains = ["despegar.com.mx"]
 	start_urls = ('http://www.despegar.com.mx/hoteles/hl/7874/i1/hoteles-en-veracruz',
 		'http://www.despegar.com.mx/hoteles/hl/1569/i1/hoteles-en-cancun',
-	#	'http://www.despegar.com.mx/hoteles/hl/7874/i3/hoteles-en-veracruz'
+		'http://www.despegar.com.mx/hoteles/hl/5555/i1/hoteles-en-puebla',
+		'http://www.despegar.com.mx/hoteles/hl/5584/i1/hoteles-en-playa+del+carmen',
+		'http://www.despegar.com.mx/hoteles/hl/49/i1/hoteles-en-acapulco',
 	)
 	
 	
