@@ -14,6 +14,10 @@ def db_connect():
     """
     return create_engine('postgresql://dpa-user@localhost:5432/scrape')
 
+def drop_despegar_table(engine):
+    """"""
+    DeclarativeBase.metadata.drop_all(engine)
+
 
 def create_despegar_table(engine):
     """"""

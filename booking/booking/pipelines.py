@@ -5,7 +5,7 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 from sqlalchemy.orm import sessionmaker
-from models import Booking, db_connect, create_booking_table
+from models import Booking, db_connect, create_booking_table, drop_booking_table
 
 class BookingPipeline(object):
     """Despegar pipeline for storing scraped items in the database"""
@@ -14,6 +14,7 @@ class BookingPipeline(object):
            Creates deals table.
         """
         engine = db_connect()
+        drop_booking_table(engine)
         create_booking_table(engine)
         self.Session = sessionmaker(bind=engine)
 

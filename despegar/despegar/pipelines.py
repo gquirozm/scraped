@@ -5,7 +5,7 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 from sqlalchemy.orm import sessionmaker
-from models import Despegar, db_connect, create_despegar_table
+from models import Despegar, db_connect, create_despegar_table, drop_despegar_table
 
 class DespegarPipeline(object):
     """Despegar pipeline for storing scraped items in the database"""
@@ -14,6 +14,7 @@ class DespegarPipeline(object):
            Creates deals table.
         """
         engine = db_connect()
+	drop_despegar_table(engine)
         create_despegar_table(engine)
         self.Session = sessionmaker(bind=engine)
 
