@@ -16,7 +16,14 @@ class DespegarSpider(scrapy.Spider):
 		'http://www.despegar.com.mx/hoteles/hl/1569/i1/hoteles-en-cancun',
 		'http://www.despegar.com.mx/hoteles/hl/5555/i1/hoteles-en-puebla',
 		'http://www.despegar.com.mx/hoteles/hl/5584/i1/hoteles-en-playa+del+carmen',
+		'http://www.despegar.com.mx/hoteles/hl/5991/i1/hoteles-en-puerto+vallarta',
+		'http://www.despegar.com.mx/hoteles/hl/4474/i1/hoteles-en-ciudad+de+mexico',
+		'http://www.despegar.com.mx/hoteles/hl/8934/i1/hoteles-en-riviera+maya',
+		'http://www.despegar.com.mx/hoteles/hl/4948/i1/hoteles-en-mazatlan',
+		'http://www.despegar.com.mx/hoteles/hl/179324/i1/hoteles-en-ixtapazihuatanejo',
 		'http://www.despegar.com.mx/hoteles/hl/49/i1/hoteles-en-acapulco',
+		'http://www.despegar.com.mx/hoteles/hl/2442/i1/hoteles-en-guadalajara',
+		'http://www.despegar.com.mx/hoteles/hl/3944/i1/hoteles-en-las+vegas',
 	)
 	
 	

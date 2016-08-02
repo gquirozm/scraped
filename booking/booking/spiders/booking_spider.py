@@ -12,23 +12,36 @@ from scrapy.linkextractors import LinkExtractor
 class DespegarSpider(scrapy.Spider):
 	name = 'booking_cl'
 	allowed_domains = ["booking.com"]
-	start_urls = ('http://www.booking.com/city/mx/cancun.es.html',
-		'http://www.booking.com/city/mx/veracruz-mx.es.html',
-		'http://www.booking.com/city/mx/merida.es.html',
-		'http://www.booking.com/city/mx/mexico.es.html',
-		'http://www.booking.com/city/mx/acapulco-de-juarez.es.html',
-		#''
-	)
+#	start_urls = ('http://www.booking.com/city/mx/cancun.es.html',
+#		'http://www.booking.com/city/mx/veracruz-mx.es.html',
+#		'http://www.booking.com/city/mx/merida.es.html',
+#		'http://www.booking.com/city/mx/mexico.es.html',
+#		'http://www.booking.com/city/mx/acapulco-de-juarez.es.html',
+#		'http://www.booking.com/city/mx/puerto-vallarta.es.html',
+#		'http://www.booking.com/city/mx/playa-del-carmen.es.html',
+#		'http://www.booking.com/region/mx/mayanriviere.es.html',
+#	)
+
+	start_urls = ('http://www.booking.com/searchresults.es.html?city=-1655011', 
+               'http://www.booking.com/searchresults.es.html?city=-1707815',
+               'http://www.booking.com/searchresults.es.html?city=-1683102',
+               'http://www.booking.com/searchresults.es.html?city=-1658079',
+               'http://www.booking.com/searchresults.es.html?city=-1649039',
+               'http://www.booking.com/searchresults.es.html?city=-1690444',
+               'http://www.booking.com/searchresults.es.html?city=-1689065',
+               'http://www.booking.com/searchresults.es.html?region=2612',
+       	)
+
 	
 	
 	def parse(self, response):
 		# Get the next index URLs and yield Requests
-		next_selector = response.xpath('//*[contains(@class,"promotion-pagination-box")]//@href')
+		next_selector = response.xpath('//*[contains(@class,"gotopage")]//@href')
 		for url in next_selector.extract():
 		    yield Request(url)
 
         	# Get item URLs and yield Requests
-		item_selector = response.xpath('//*[contains(@class,"lp_promotion_cards_list_child_hotelname")]/a//@href')
+		item_selector = response.xpath('//*[contains(@class,"hotel_name_link url")]//@href')
 		for url in item_selector.extract():
 		    yield Request(urlparse.urljoin("http://www.booking.com/", url),
 		                  callback=self.parse_item)

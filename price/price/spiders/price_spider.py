@@ -17,8 +17,12 @@ class PriceSpider(scrapy.Spider):
 		'http://www.pricetravel.com.mx/playa-del-carmen/hoteles/3-estrellas-mas?true',
 		'http://www.pricetravel.com.mx/acapulco/hoteles/3-estrellas-mas?true',
 		'http://www.pricetravel.com.mx/puerto-vallarta/hoteles/3-estrellas-mas?true',
-	#	'http://www.pricetravel.com.mx/ciudad-de-mexico/hoteles/3-estrellas-mas?true',
-
+		'http://www.pricetravel.com.mx/ciudad-de-mexico/hoteles/3-estrellas-mas?true',
+		'http://www.pricetravel.com.mx/riviera-maya/hoteles/3-estrellas-mas?true',
+		'http://www.pricetravel.com.mx/mazatlan/hoteles/3-estrellas-mas?true',
+		'http://www.pricetravel.com.mx/ixtapa-zihuatanejo/hoteles/3-estrellas-mas?true'
+		'http://www.pricetravel.com.mx/guadalajara/hoteles/3-estrellas-mas?true'
+		'http://www.pricetravel.com.mx/las-vegas/hoteles/3-estrellas-mas?true',
 	)
 	
 	
